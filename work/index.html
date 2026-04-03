@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Interior Design Service</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  let slides = document.querySelectorAll(".slide");
+  let index = 0;
+
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 3000);
+});
+</script>
+
+<body>
+
+<header>
+  <div class="slider">
+  <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6" class="slide active">
+  <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" class="slide">
+  <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c" class="slide">
+</div>
+  
+  <div class="overlay">
+    <h1>Welcome to A.A LumeGrids </h1>
+    <p>Get your dream space designed</p>
+    <a href="#services">
+  <button>Get Started</button>
+</a>
+  </div>
+</header>
+
+
+<section class="services" id="services">
+  <h2 class="service-title">Our Services</h2>
+
+  <div class="card-container">   <!-- OPEN -->
+  
+   <a href="estimate.html" class="card-link">
+  <div class="card">
+    <img src="https://th.bing.com/th/id/OIP.Q2IXSAy8gHFw3qgzWNg7vgHaEc?w=233&h=180" alt="">
+    <h3>Basic Layout for Lighting Design</h3>
+    <p>2D Area Plan</p>
+    <span>₹80/ sq ft</span>
+  </div>
+</a>
+
+<a href="estimate.html" class="card-link">
+  <div class="card">
+    <img src="https://th.bing.com/th/id/OIP.Q2IXSAy8gHFw3qgzWNg7vgHaEc?w=233&h=180" alt="">
+    <h3>Basic Layout for Electrical Design</h3>
+    <p>2D Area Plan</p>
+    <span>₹100/ sq ft</span>
+  </div>
+</a>
+</a>
+<!-- <a href="estimate.html" class="card-link">
+  <div class="card">
+    <img src="https://th.bing.com/th/id/OIP.47WymcD4F82RKMIC9VU_MQHaEK?w=321&h=180" alt="">
+    <h3>Premium Design Lighting Design</h3>
+    <p>2D + 3D View</p>
+    <span>₹1499</span>
+  </div>
+</a>
+<a href="estimate.html" class="card-link">
+  <div class="card">
+    <img src="https://th.bing.com/th/id/OIP.47WymcD4F82RKMIC9VU_MQHaEK?w=321&h=180" alt="">
+    <h3>Premium Design for Electrical Design</h3>
+    <p>2D + 3D View</p>
+    <span>₹1499</span>
+  </div>
+</a> -->
+
+
+
+  </div>   <!-- CLOSE -->
+
+</section>
+
+</section>
+
+
+
+
+ <footer class="footer">
+
+  <p class="footer-text">
+  We specialize in <span>lighting design</span> and 
+  <span>electrical layouts</span> for modern homes. 
+  From <span>smart planning</span> to <span>precise drawings</span>, 
+  we help you create a <span>safe</span>, <span>efficient</span>, 
+  and perfectly designed space.
+</p>
+  <p class="contact">
+    📞 Contact: <a href="tel:9876543210">7439688718</a>
+  </p>
+  <div class="social-icons">
+
+  <a href="https://wa.me/917439688718" target="_blank">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <a href="https://www.instagram.com/aalumegrids/" target="_blank">
+    <i class="fa-brands fa-instagram"></i>
+  </a>
+
+  <a href="https://www.facebook.com/" target="_blank">
+    <i class="fa-brands fa-facebook-f"></i>
+  </a>
+
+  <a href="aalumegrids@gmail.com">
+    <i class="fa-solid fa-envelope"></i>
+  </a>
+
+</div>
+
+</footer>
+
+
+</body>
+</html>

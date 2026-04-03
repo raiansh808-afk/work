@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Get Estimate</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<script>
+  const buttons = document.querySelectorAll(".option");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.classList.toggle("active");
+    });
+  });
+</script>
+<body class="estimate-page">
+
+<div class="container">
+
+  <h1>Get Your Design Estimate</h1>
+  <p style="color:#d4af37;">STEP 1 OF 2</p>
+  <p class="sub">Answer few questions to get started</p>
+
+  <div class="box">
+
+    <h3>🏠 Select your floor plan</h3>
+
+    <div class="options">
+  <button class="option floor">1 BHK</button>
+  <button class="option floor">2 BHK</button>
+  <button class="option floor">3 BHK</button>
+  <button class="option floor">3+ BHK</button>
+</div>
+
+<h3>🎯 Purpose</h3>
+
+<div class="options">
+  <button class="option purpose">Move In</button>
+  <button class="option purpose">Rent Out</button>
+  <button class="option purpose">Renovate</button>
+</div>
+    </div>
+
+  </div>
+
+</div>
+
+<div id="popup" class="popup">
+
+  <div class="popup-content">
+
+    <span class="close">&times;</span>
+
+    <h2>Meet a designer</h2>
+
+    <input type="text" id="name" placeholder="Enter your name">
+<input type="text" id="phone" placeholder="Enter your mobile number">
+
+<select id="city">
+  <option value="">Select your property city</option>
+  <option>Kolkata</option>
+  <option>Delhi</option>
+  <option>Mumbai</option>
+</select>
+
+    <button class="book-btn" id="waBtn" disabled onclick="sendToWhatsApp()">
+  Continue on WhatsApp →
+</button>
+
+    <p style="font-size:12px; margin-top:10px;">
+      By submitting, you agree to our terms & policy
+    </p>
+
+  </div>
+
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  // 🔥 BUTTONS
+  const floorBtns = document.querySelectorAll(".floor");
+  const purposeBtns = document.querySelectorAll(".purpose");
+  const popup = document.getElementById("popup");
+  const closeBtn = document.querySelector(".close");
+
+  // 🔥 FORM ELEMENTS
+  const nameInput = document.getElementById("name");
+  const phoneInput = document.getElementById("phone");
+  const cityInput = document.getElementById("city");
+  const waBtn = document.getElementById("waBtn");
+
+  let selectedFloor = "";
+  let selectedPurpose = "";
+
+  // =========================
+  // FLOOR SELECT
+  // =========================
+  floorBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      floorBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedFloor = btn.innerText;
+      checkAndOpen();
+    });
+  });
+
+  // =========================
+  // PURPOSE SELECT
+  // =========================
+  purposeBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      purposeBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      selectedPurpose = btn.innerText;
+      checkAndOpen();
+    });
+  });
+
+  // =========================
+  // OPEN POPUP
+  // =========================
+  function checkAndOpen() {
+    if (selectedFloor && selectedPurpose) {
+      popup.style.display = "flex";
+    }
+  }
+
+  // =========================
+  // RESET FUNCTION
+  // =========================
+  function resetSelection() {
+    floorBtns.forEach(b => b.classList.remove("active"));
+    purposeBtns.forEach(b => b.classList.remove("active"));
+    selectedFloor = "";
+    selectedPurpose = "";
+
+    // form reset bhi
+    if(nameInput) nameInput.value = "";
+    if(phoneInput) phoneInput.value = "";
+    if(cityInput) cityInput.value = "";
+    if(waBtn) {
+      waBtn.disabled = true;
+      waBtn.style.opacity = "0.5";
+    }
+  }
+
+  // =========================
+  // CLOSE POPUP
+  // =========================
+  if(closeBtn){
+    closeBtn.onclick = () => {
+      popup.style.display = "none";
+      resetSelection();
+    };
+  }
+
+  window.onclick = (e) => {
+    if (e.target == popup) {
+      popup.style.display = "none";
+      resetSelection();
+    }
+  };
+
+  // =========================
+  // FORM VALIDATION
+  // =========================
+  function checkForm() {
+    if (
+      nameInput.value.trim() !== "" &&
+      phoneInput.value.trim().length === 10 &&
+      cityInput.value !== ""
+    ) {
+      waBtn.disabled = false;
+      waBtn.style.opacity = "1";
+    } else {
+      waBtn.disabled = true;
+      waBtn.style.opacity = "0.5";
+    }
+  }
+
+  if(nameInput && phoneInput && cityInput){
+    nameInput.addEventListener("input", checkForm);
+    phoneInput.addEventListener("input", checkForm);
+    cityInput.addEventListener("change", checkForm);
+  }
+
+  // =========================
+  // WHATSAPP SEND
+  // =========================
+  window.sendToWhatsApp = function () {
+
+    let name = nameInput.value;
+    let phone = phoneInput.value;
+    let city = cityInput.value;
+
+    let message = `Hello, I want interior design
+
+ Floor Plan: ${selectedFloor}
+ Purpose: ${selectedPurpose}
+
+ Name: ${name}
+ Phone: ${phone}
+ City: ${city}`;
+
+    let url = "https://wa.me/917439688718?text=" + encodeURIComponent(message);
+
+    window.open(url, "_blank");
+  };
+
+});
+</script>
+</body>
+</html>
